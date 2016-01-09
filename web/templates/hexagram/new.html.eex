@@ -1,0 +1,6 @@
+<h2>New hexagram</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: hexagram_path(@conn, :create) %>
+
+<%= link "Back", to: hexagram_path(@conn, :index) %>
