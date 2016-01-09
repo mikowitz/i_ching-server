@@ -25,6 +25,7 @@ defmodule IChing.ConnCase do
       import Ecto.Query, only: [from: 2]
 
       import IChing.Router.Helpers
+      import IChing.TestHelpers
 
       # The default endpoint for testing
       @endpoint IChing.Endpoint
