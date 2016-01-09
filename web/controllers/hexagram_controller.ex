@@ -10,7 +10,7 @@ defmodule IChing.HexagramController do
 
   def show(conn, %{"id" => id}) do
     hexagram = Repo.get!(Hexagram, id)
-    IO.inspect hexagram
+    |> Repo.preload([:judgement, :image])
     render(conn, "show.html", hexagram: hexagram)
   end
 end

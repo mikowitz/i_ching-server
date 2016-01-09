@@ -1,6 +1,17 @@
-%h2 = @hexagram.english_name
+%h2= @hexagram.english_name
 %h3= @hexagram.chinese_name
 %h3= @hexagram.king_wen_number
 %h4= @hexagram.characters
 %p
   %b= @hexagram.binary
+
+= if @hexagram.judgement do
+  %p
+    %h4 The Judgement
+    = @hexagram.judgement.content
+- end
+= if @hexagram.image do
+  %p
+    %h4 The Image
+    = @hexagram.image.content
+- end

@@ -11,6 +11,8 @@ defmodule IChing.Hexagram do
     field :chinese_name, :string
     field :characters, :string
     field :binary, :integer
+    has_one :judgement, IChing.Judgement
+    has_one :image, IChing.Image
 
     timestamps
   end

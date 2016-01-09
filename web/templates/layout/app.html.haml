@@ -18,8 +18,6 @@
           %ul.nav.nav-pills.pull-right
             %li= link "Hexagrams", to: hexagram_path(@conn, :index)
 
-
-
       %p.alert.alert-info(role="alert")= get_flash(@conn, :info)
       %p.alert.alert-error(role="alert")= get_flash(@conn, :error)
 
