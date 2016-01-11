@@ -1,59 +1,45 @@
-// let Hexagram = {
-//     init() {
-//         // let this.hexagramDiv = document.getElementById("hexagram")
-//         // if (!hexagramDiv) { return }
-//         // let this.lines = hexagramDiv.getAttribute("data-lines").split("")
-//         // console.log(this.lines)
-//         // this.drawRows()
-
-//     }
-
-//     // drawRows() {
-//     //     console.log("OK")
-//         // for (var i = this.lines.length; i > 0; i--) {
-//         //     let row = document.createElement("div")
-//         //     row.setAttribute("class", "row")
-//         //     row.setAttribute("id", `row-${i}`)
-//         //     row.setAttribute("data-line-type", this.lines[i-1])
-//         //     this.hexagramDiv.appendChild(row)
-//         //     console.log(`${i} : ${this.lines[i-1]}`)
-
-//         // }
-//     // }
-// }
-
 class Hexagram {
     constructor() {
         this.hexagramDiv = document.getElementById("hexagram")
         if (!this.hexagramDiv) { return }
         this.lines = this.hexagramDiv.getAttribute("data-lines").split("")
-        console.log(this.lines)
         this.drawLines()
     }
 
     drawLines() {
-        console.log("OK")
         for (var i = this.lines.length; i > 0; i--) {
-            let row = document.createElement("div")
             let line = this.lines[i-1]
-            row.setAttribute("class", "row")
-            row.setAttribute("id", `row-${i}`)
-            row.setAttribute("data-line-type", line)
-            if (line == "0") {
-                let col1 = document.createElement("div")
-                col1.setAttribute("class", "col-sm-4 hexagram-line")
-                row.appendChild(col1)
-
-                let col2 = document.createElement("div")
-                col2.setAttribute("class", "col-sm-4 col-sm-offset-4 hexagram-line")
-                row.appendChild(col2)
-            } else if (line == "1") {
-                let col = document.createElement("div")
-                col.setAttribute("class", "col-sm-12 hexagram-line")
-                row.appendChild(col)
-            }
+            let row = this.buildRow(line, i)
             this.hexagramDiv.appendChild(row)
         }
+    }
+
+    buildRow(line, index) {
+        let row = document.createElement("div")
+        row.setAttribute("class", "row")
+        row.setAttribute("id", `row-${index}`)
+        row.setAttribute("data-line", line)
+        return this.drawLine(row, line)
+    }
+
+    drawLine(row, line) {
+        switch(line) {
+        case "0":
+            for (var additionalClass of ["", "col-sm-offset-4"]) {
+                let col = document.createElement("div")
+                let classes = ["col-sm-4", "hexagram-line"]
+                classes.push(additionalClass)
+                col.setAttribute("class", classes.join(" "))
+                row.appendChild(col)
+            }
+            break;
+        case "1":
+            let col = document.createElement("div")
+            col.setAttribute("class", "col-sm-12 hexagram-line")
+            row.appendChild(col)
+            break;
+        }
+        return row
     }
 }
 
