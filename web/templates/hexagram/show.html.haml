@@ -1,17 +1,17 @@
-%h2= @hexagram.english_name
-%h3= @hexagram.chinese_name
-%h3= @hexagram.king_wen_number
-%h4= @hexagram.characters
-%p
-  %b= @hexagram.binary
+%h1
+  = @hexagram.king_wen_number
+  = ") " <> @hexagram.english_name
+%h3
+  = @hexagram.chinese_name <> " - "
+  = @hexagram.characters
 
-= if @hexagram.judgement do
-  %p
-    %h4 The Judgement
-    = @hexagram.judgement.content
-- end
-= if @hexagram.image do
-  %p
-    %h4 The Image
-    = @hexagram.image.content
-- end
+#hexagram(data-lines="#{IChing.Hexagram.to_base2(@hexagram)}")
+
+.row
+  = [{@hexagram.judgement, "The Judgement"}, {@hexagram.image, "The Image"}] |> Enum.map fn {el, title} ->
+    = if el do
+      .col-sm-6
+        %h4= title
+        = render_with_linebreaks(el.content)
+    - end
+  - end

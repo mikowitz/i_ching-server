@@ -1,0 +1,13 @@
+#hexagram {
+  max-width: 200px;
+}
+
+#hexagram .row {
+  padding-bottom: 10px;
+}
+
+.hexagram-line {
+  min-height: 20px;
+  background-color: black;
+  border-radius: 4px;
+}
