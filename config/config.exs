@@ -28,9 +28,9 @@ config :phoenix, :generators,
 config :phoenix, :template_engines,
   haml: PhoenixHaml.Engine
 
-config :apples_and_oranges, static_app: :i_ching
-config :apples_and_oranges, port: 1985
-config :apples_and_oranges, router: ApplesAndOranges.Router
+# config :apples_and_oranges, static_app: :i_ching
+# config :apples_and_oranges, port: 1985
+# config :apples_and_oranges, router: ApplesAndOranges.Router
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
