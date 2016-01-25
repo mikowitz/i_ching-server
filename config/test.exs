@@ -17,3 +17,8 @@ config :i_ching, IChing.Repo,
   database: "i_ching_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+hound_driver = System.get_env("WEBDRIVER") || "phantomjs"
+config :hound, driver: hound_driver, host: "http://localhost", app_port: 4000
+
+config :apples_and_oranges, port: 1989
