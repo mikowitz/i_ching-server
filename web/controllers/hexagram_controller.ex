@@ -5,12 +5,12 @@ defmodule IChing.HexagramController do
 
   def index(conn, _params) do
     hexagrams = Repo.all(Hexagram)
-    render(conn, "index.html", hexagrams: hexagrams)
+    render(conn, hexagrams: hexagrams)
   end
 
   def show(conn, %{"id" => id}) do
     hexagram = Repo.get!(Hexagram, id)
     |> Repo.preload([:judgement, :image])
-    render(conn, "show.html", hexagram: hexagram)
+    render(conn, hexagram: hexagram)
   end
 end

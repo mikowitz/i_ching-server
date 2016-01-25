@@ -11,6 +11,15 @@ defmodule IChing.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+  end
+
+  scope "/api" do
+    pipe_through :api
+
+    scope "/v1" do
+      resources "/hexagrams", IChing.HexagramController, only: [:index, :show]
+    end
   end
 
   scope "/", IChing do
