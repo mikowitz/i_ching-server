@@ -38,7 +38,7 @@ defmodule IChing.Mixfile do
      {:phoenix_haml, github: "chrismccord/phoenix_haml", override: true},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
-     {:apples_and_oranges, path: "/Users/michaelberkowitz/Dropbox/code/apples_and_oranges"},
+     {:apples_and_oranges, path: "/Users/michaelberkowitz/Dropbox/code/apples_and_oranges", only: [:dev, :test]},
      {:cowboy, "~> 1.0"}]
   end
 
