@@ -7,8 +7,8 @@ exports.config = {
       // To use a separate vendor.js bundle, specify two files path
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
       // joinTo: {
-      //  "js/app.js": /^(web\/static\/js)/,
-       // "js/vendor.js": /^(web\/static\/vendor)|(deps)/
+      //     "js/app.js": /(web\/static\/js)/,
+      //     "js/vendor.js": /(web\/static\/vendor)|^(node_modules)/
       // }
       //
       // To change the order of concatenation of files, explicitly mention here
@@ -32,13 +32,15 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/web/static/assets". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: /(web\/static\/assets)/
+    assets: /^(web\/static\/assets)/
   },
 
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
     watched: [
+      "node_modules/phoenix",
+      "node_modules/phoenix_html",
       "web/static",
       "test/static"
     ],
