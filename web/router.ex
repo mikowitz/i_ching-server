@@ -14,7 +14,7 @@ defmodule IChing.Router do
 
   end
 
-  scope "/api" do
+  scope "/api", as: :api do
     pipe_through :api
 
     scope "/v1" do
